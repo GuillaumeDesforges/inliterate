@@ -26,3 +26,14 @@ executables:
     source-dirs: src/exe
     dependencies:
       - inliterate
+
+tests:
+  test-inliterate:
+    main: TestInliterate.hs
+    dependencies:
+      - inliterate
+  test-inliterate-pp:
+    buildable: False
+    main: TestInliteratePreProc.hs
+    dependencies:
+      - inliterate

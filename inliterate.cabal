@@ -59,3 +59,40 @@ executable inlitpp
     , text
     , time
   default-language: Haskell2010
+
+test-suite test-inliterate
+  type: exitcode-stdio-1.0
+  main-is: TestInliterate.hs
+  other-modules:
+      Paths_inliterate
+  build-depends:
+      base
+    , blaze-html
+    , cheapskate
+    , containers
+    , haskell-src-exts ==1.23.1
+    , inliterate
+    , lucid
+    , lucid-extras
+    , text
+    , time
+  default-language: Haskell2010
+
+test-suite test-inliterate-pp
+  type: exitcode-stdio-1.0
+  main-is: TestInliteratePreProc.hs
+  other-modules:
+      Paths_inliterate
+  build-depends:
+      base
+    , blaze-html
+    , cheapskate
+    , containers
+    , haskell-src-exts ==1.23.1
+    , inliterate
+    , lucid
+    , lucid-extras
+    , text
+    , time
+  buildable: False
+  default-language: Haskell2010
