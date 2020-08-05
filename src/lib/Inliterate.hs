@@ -96,7 +96,7 @@ printAsk cts t =
             T.intercalate "," showCts,
             "]",
             " (",
-            chomp t,
+            chomp' t,
             ")"
           ]
       ]
@@ -112,8 +112,27 @@ printAnyBlock blk =
 escape :: Text -> Text
 escape = T.pack . show . T.unpack
 
+-- | Chomp code snippet for display
 chomp :: Text -> Text
-chomp = T.dropWhile (== '\n') . T.strip . T.dropWhileEnd (== '\n')
+chomp =
+  -- Remove heading lines
+  T.dropWhile (== '\n')
+    -- Dunno
+    . T.strip
+    -- Remove trailing lines
+    . T.dropWhileEnd (== '\n')
+
+-- | Chomp code snippet before inserting it into the actual executed result
+chomp' :: Text -> Text
+chomp' =
+  -- Handle multiline indents
+  (T.replace "\n" "\n    ")
+    -- Remove heading lines
+    . T.dropWhile (== '\n')
+    -- Dunno
+    . T.strip
+    -- Remove trailing lines
+    . T.dropWhileEnd (== '\n')
 
 getBlocks :: Doc -> [Block]
 getBlocks (Doc _ sblocks) = removeOptionsGhc $ toList sblocks

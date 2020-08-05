@@ -48,4 +48,15 @@ and lets have another question
 
 ```
 
+multiline code
+
+```haskell eval
+
+let
+  someString = "Hello"
+in
+  someString
+
+```
+
 Goodbye!
