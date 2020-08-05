@@ -1,0 +1,28 @@
+name: inliterate
+version: 0.2.0
+synopsis: Interactive literate programming
+description: Write notebook-like pages with evaluated Haskell snippets using Markdown
+maintainer: guillaume.desforges.pro@gmail.com
+github: GuillaumeDesforges/inliterate
+category: Development
+
+dependencies:
+  - base
+  - blaze-html
+  - cheapskate
+  - containers
+  - haskell-src-exts == 1.23.1
+  - lucid
+  - lucid-extras
+  - text
+  - time
+
+library:
+  source-dirs: src/lib
+
+executables:
+  inlitpp:
+    main: InlitPreProc.hs
+    source-dirs: src/exe
+    dependencies:
+      - inliterate

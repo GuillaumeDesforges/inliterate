@@ -1,6 +1,6 @@
 # inliterate: Dynamic reporting for Haskell
 
-GHC preprocessor to make notebook-like documents with Haskell code snippets using Markdown.
+Write notebook-like pages with evaluated Haskell snippets using Markdown
 
 ## Notes
 
@@ -11,13 +11,13 @@ This is a "fork" from the repository https://github.com/diffusionkinetics/open/
 The aim of inliterate is to generate dynamic markdown reports from literate Haskell code in which
 code blocks can be evaluated to present the results of analyses in textual or graphical form.
 
-inliterate is a GHC preprocessor which transforms a markdown document into a Haskell program, 
+inliterate is a GHC preprocessor which transforms a markdown document into a Haskell program,
 which, when run, prints to stdout the input document in HTML format. Certain code blocks with special
-annotations can be treated in particular ways: as Haskell code that must be included in the 
+annotations can be treated in particular ways: as Haskell code that must be included in the
 generating program (at the top level or in a do block) and as code that must be evaluated with the results
 inserted into the HTML document.
 
-For an example document, see https://github.com/diffusionkinetics/open/blob/master/plotlyhs/gendoc/GenDocInlit.hs which 
+For an example document, see https://github.com/diffusionkinetics/open/blob/master/plotlyhs/gendoc/GenDocInlit.hs which
 ccompiles into https://glutamate.github.io/plotlyhs/.
 
 ## The inliterate document
@@ -32,7 +32,7 @@ this tells GHC to invoke the preprocessor.
 
 ### Code blocks
 
-inliterate gives special meaning to the following code block language annotations (see the plotlyhs documentation 
+inliterate gives special meaning to the following code block language annotations (see the plotlyhs documentation
 generator to see how these are invoked)
 
 #### `html_header`
@@ -49,8 +49,8 @@ Haskell code that is added to the main do block. use this for loading data or ot
 
 #### `haskell eval`
 
-Haskell code that is evaluated. The resultant type must be an instance of the `AskInliterate` class ddefined in 
-Inliterate.Import. 
+Haskell code that is evaluated. The resultant type must be an instance of the `AskInliterate` class ddefined in
+Inliterate.Import.
 
 #### `hide`
 
@@ -87,7 +87,9 @@ should be listed in your cabal file as a build dependency to make sure the packa
 ```
 stack runghc InliterateFile.hs
 ```
+
 if you want only the body HTML and not the headers, you can pass the argument `--no-inlit-wrap` to the executable
+
 ```
 stack runghc InliterateFile.hs -- --no-inlit-wrap
 ```
